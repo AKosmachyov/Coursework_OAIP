@@ -3,10 +3,16 @@ unit Storage;
 interface
 uses
   entitySet;
+
+procedure createTest(time:Integer);
+procedure addCategory(useQuest:integer; markQuest:integer);
+procedure createQuestion(idCateg:Integer; idQuest:Integer; text:string; typeQuestion:Integer; attachment:string);
+procedure createAnswer(idCateg:Integer; idQuest:Integer; idAnsw:Integer; isCorrect:Boolean; text:string; attachment:string);
+
 var _test:Test;
 implementation
 
-procedure createTest(time);
+procedure createTest(time:Integer);
 begin
   if time <> -1 then
     _test.timeForComplite :=time
@@ -33,13 +39,13 @@ begin
   _test.categoris[Length(_test.categoris)-1] := categor;
 end;
 
-procedure createQuestion(idCateg:ineteger; idQuest:Integer; text:string; typeQuestion:Integer; attachment:string);
+procedure createQuestion(idCateg:Integer; idQuest:Integer; text:string; typeQuestion:Integer; attachment:string);
 var
   quest : Question;
 begin
   quest.text := text;
   quest.typeQuestion := typeQuestion;
-  quest.attachment : =attachment;
+  quest.attachment := attachment;
   SetLength(quest.variantAnswers,0);
   with _test.categoris[idCateg] do
   begin
@@ -48,7 +54,7 @@ begin
   end;
 end;
 
-procedure createAnswer(idCateg:ineteger; idQuest:Integer; idAnsw:Integer; isCorrect:Booleanl; text:string; attachment:string);
+procedure createAnswer(idCateg:Integer; idQuest:Integer; idAnsw:Integer; isCorrect:Boolean; text:string; attachment:string);
 var
   answ:Answer;
 begin
