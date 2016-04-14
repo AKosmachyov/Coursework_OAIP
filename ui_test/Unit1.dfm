@@ -19,6 +19,7 @@ object Form1: TForm1
     Top = 128
     object N1: TMenuItem
       Caption = #1057#1086#1079#1076#1072#1090#1100
+      OnClick = N1Click
     end
   end
 end
