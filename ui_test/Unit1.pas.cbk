@@ -22,13 +22,15 @@ var
 
 implementation
 
+uses TestVieu;
+
 {$R *.dfm}
 
 procedure TForm1.N1Click(Sender: TObject);
 begin
   createTest(-1);
   Form1.Hide();
-  Form2
+  Form2.Show();
 end;
 
 end.
