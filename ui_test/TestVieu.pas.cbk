@@ -51,8 +51,8 @@ begin
     else
       Exit;
   end;
-  ShowMessage(ref(TreeView1.Selected.data).name);
-  case ref(TreeView1.Items.Item[2].Data).recType of
+
+  case ref(TreeView1.Selected.Data).recType of
     1:ShowMessage('good');
    else ShowMessage('213');
   end;

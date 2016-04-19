@@ -5,10 +5,10 @@ uses
   entitySet;
 
 procedure createTest(time:Integer);
-procedure addCategory(useQuest:integer; markQuest:integer);
-procedure createQuestion(idCateg:Integer; idQuest:Integer; text:string; typeQuestion:Integer; attachment:string);
+function addCategory(name:string; useQuest:integer; markQuest:integer):Pointer;
+{procedure createQuestion(idCateg:Integer; idQuest:Integer; text:string; typeQuestion:Integer; attachment:string);
 procedure createAnswer(idCateg:Integer; idQuest:Integer; idAnsw:Integer; isCorrect:Boolean; text:string; attachment:string);
-
+ }
 var _test:Test;
 implementation
 
@@ -21,10 +21,12 @@ begin
   SetLength(_test.categoris,0);
 end;
 
-procedure addCategory(useQuest:integer; markQuest:integer);
-var categor:Categoris;
+function addCategory(name:string; useQuest:integer; markQuest:integer):Pointer;
+var categor:^Categoris;
 begin
   SetLength(_test.categoris,Length(_test.categoris)+1);
+  New(categor);
+  categor.name:=name;
   if useQuest <> -1 then
     categor.useQuestions := useQuest
   else
@@ -34,12 +36,13 @@ begin
     categor.markQuestion := markQuest
   else
     categor.markQuestion := MARK_QUESTIONS;
-
+  categor.recType:=1;
   SetLength(categor.Questions,0);
   _test.categoris[Length(_test.categoris)-1] := categor;
+  addCategory:=categor;
 end;
 
-procedure createQuestion(idCateg:Integer; idQuest:Integer; text:string; typeQuestion:Integer; attachment:string);
+{procedure createQuestion(idCateg:Integer; idQuest:Integer; text:string; typeQuestion:Integer; attachment:string);
 var
   quest : Question;
 begin
@@ -66,5 +69,5 @@ begin
     SetLength(variantAnswers,length(variantAnswers)+1);
     variantAnswers[idAnsw] := answ;
   end;
-end;
+end;}
 end.
