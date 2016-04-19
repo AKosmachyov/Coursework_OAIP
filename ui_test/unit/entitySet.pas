@@ -13,8 +13,8 @@ type
     text : string;
     typeQuestion : integer;
     attachment : string;
-    variantAnswers : array of Answer;
-    recType:string;
+    variantAnswers : array of Pointer;
+    recType:Integer;
   end;
 
   Categoris = record

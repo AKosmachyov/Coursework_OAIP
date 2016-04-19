@@ -34,12 +34,63 @@ object Form2: TForm2
       010000001D0000000000000000000000FFFFFFFFFFFFFFFF0000000000000000
       04D2E5F1F2}
   end
-  object Button2: TButton
-    Left = 792
-    Top = 64
-    Width = 75
-    Height = 25
-    Caption = 'Button2'
+  object GroupBox1: TGroupBox
+    Left = 440
+    Top = 16
+    Width = 337
+    Height = 233
     TabOrder = 2
+    Visible = False
+    object Label1: TLabel
+      Left = 8
+      Top = 16
+      Width = 119
+      Height = 13
+      Caption = #1042#1074#1077#1076#1080#1090#1077' '#1090#1077#1082#1089#1090' '#1074#1086#1087#1088#1086#1089#1072
+    end
+    object Edit1: TEdit
+      Left = 16
+      Top = 40
+      Width = 281
+      Height = 57
+      TabOrder = 0
+    end
+    object RadioGroup1: TRadioGroup
+      Left = 40
+      Top = 112
+      Width = 65
+      Height = 73
+      Items.Strings = (
+        '1'
+        '2'
+        '3')
+      TabOrder = 1
+    end
+    object Button3: TButton
+      Left = 216
+      Top = 200
+      Width = 75
+      Height = 25
+      Caption = #1055#1088#1080#1085#1103#1090#1100
+      TabOrder = 2
+      OnClick = Button3Click
+    end
+    object Button4: TButton
+      Left = 40
+      Top = 192
+      Width = 75
+      Height = 25
+      Caption = #1047#1072#1082#1088#1099#1090#1100
+      TabOrder = 3
+      OnClick = Button4Click
+    end
+    object GroupBox2: TGroupBox
+      Left = 0
+      Top = 0
+      Width = 337
+      Height = 233
+      Caption = 'GroupBox2'
+      TabOrder = 4
+    end
   end
 end

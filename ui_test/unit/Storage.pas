@@ -6,8 +6,8 @@ uses
 
 procedure createTest(time:Integer);
 function addCategory(name:string; useQuest:integer; markQuest:integer):Pointer;
-{procedure createQuestion(idCateg:Integer; idQuest:Integer; text:string; typeQuestion:Integer; attachment:string);
-procedure createAnswer(idCateg:Integer; idQuest:Integer; idAnsw:Integer; isCorrect:Boolean; text:string; attachment:string);
+function createQuestion(text:string; typeQuestion:Integer):Pointer;
+{procedure createAnswer(idCateg:Integer; idQuest:Integer; idAnsw:Integer; isCorrect:Boolean; text:string; attachment:string);
  }
 var _test:Test;
 implementation
@@ -42,22 +42,21 @@ begin
   addCategory:=categor;
 end;
 
-{procedure createQuestion(idCateg:Integer; idQuest:Integer; text:string; typeQuestion:Integer; attachment:string);
+function createQuestion(text:string; typeQuestion:Integer):Pointer;
 var
-  quest : Question;
+  quest : ^Question;
 begin
+  New(quest);
   quest.text := text;
   quest.typeQuestion := typeQuestion;
-  quest.attachment := attachment;
+//  quest.attachment := attachment;  
+  quest.recType:=2;
   SetLength(quest.variantAnswers,0);
-  with _test.categoris[idCateg] do
-  begin
-    SetLength(Questions,length(Questions)+1);
-    Questions[length(Questions)-1] := quest;
-  end;
+
+  createQuestion:=quest;
 end;
 
-procedure createAnswer(idCateg:Integer; idQuest:Integer; idAnsw:Integer; isCorrect:Boolean; text:string; attachment:string);
+{procedure createAnswer(idCateg:Integer; idQuest:Integer; idAnsw:Integer; isCorrect:Boolean; text:string; attachment:string);
 var
   answ:Answer;
 begin
