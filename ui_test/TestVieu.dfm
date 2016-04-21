@@ -1,8 +1,8 @@
 object Form2: TForm2
-  Left = 174
-  Top = 134
-  Width = 928
-  Height = 480
+  Left = 125
+  Top = 153
+  Width = 1049
+  Height = 508
   Caption = 'Form2'
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
@@ -15,7 +15,7 @@ object Form2: TForm2
   PixelsPerInch = 96
   TextHeight = 13
   object Button1: TButton
-    Left = 792
+    Left = 944
     Top = 16
     Width = 75
     Height = 25
@@ -26,8 +26,8 @@ object Form2: TForm2
   object TreeView1: TTreeView
     Left = 8
     Top = 8
-    Width = 409
-    Height = 377
+    Width = 305
+    Height = 449
     Indent = 19
     TabOrder = 1
     OnClick = TreeView1Click
@@ -36,8 +36,8 @@ object Form2: TForm2
       04D2E5F1F2}
   end
   object GroupBox1: TGroupBox
-    Left = 440
-    Top = 16
+    Left = 464
+    Top = 72
     Width = 337
     Height = 233
     TabOrder = 2
@@ -87,20 +87,19 @@ object Form2: TForm2
     end
   end
   object Button2: TButton
-    Left = 816
-    Top = 80
+    Left = 944
+    Top = 64
     Width = 75
     Height = 25
     Caption = 'Button2'
     TabOrder = 3
-    OnClick = Button2Click
   end
   object GroupBox2: TGroupBox
-    Left = 448
+    Left = 328
     Top = 16
-    Width = 329
+    Width = 505
     Height = 385
-    Caption = 'GroupBox2'
+    Caption = #1042#1086#1087#1088#1086#1089
     TabOrder = 4
     Visible = False
     object Label2: TLabel
@@ -108,6 +107,55 @@ object Form2: TForm2
       Top = 24
       Width = 3
       Height = 13
+    end
+    object RadioGroup2: TRadioGroup
+      Left = 0
+      Top = 120
+      Width = 505
+      Height = 265
+      Caption = #1054#1090#1074#1077#1090#1099
+      TabOrder = 0
+    end
+    object GroupBox3: TGroupBox
+      Left = 88
+      Top = 144
+      Width = 329
+      Height = 225
+      Caption = #1042#1072#1088#1080#1072#1085#1090' '#1086#1090#1074#1077#1090#1072
+      TabOrder = 1
+      Visible = False
+      object Label3: TLabel
+        Left = 16
+        Top = 32
+        Width = 68
+        Height = 13
+        Caption = #1058#1077#1082#1089#1090' '#1086#1090#1074#1077#1090#1072
+      end
+      object Edit2: TEdit
+        Left = 16
+        Top = 64
+        Width = 297
+        Height = 41
+        TabOrder = 0
+      end
+      object Button5: TButton
+        Left = 200
+        Top = 168
+        Width = 75
+        Height = 25
+        Caption = #1055#1088#1080#1084#1077#1085#1080#1090#1100
+        TabOrder = 1
+        OnClick = Button5Click
+      end
+      object Button6: TButton
+        Left = 64
+        Top = 168
+        Width = 75
+        Height = 25
+        Caption = #1054#1090#1084#1077#1085#1072
+        TabOrder = 2
+        OnClick = Button4Click
+      end
     end
   end
 end
