@@ -1,6 +1,6 @@
 object Form2: TForm2
-  Left = 189
-  Top = 209
+  Left = 174
+  Top = 134
   Width = 928
   Height = 480
   Caption = 'Form2'
@@ -19,7 +19,7 @@ object Form2: TForm2
     Top = 16
     Width = 75
     Height = 25
-    Caption = 'add category'
+    Caption = '+'
     TabOrder = 0
     OnClick = Button1Click
   end
@@ -30,6 +30,7 @@ object Form2: TForm2
     Height = 377
     Indent = 19
     TabOrder = 1
+    OnClick = TreeView1Click
     Items.Data = {
       010000001D0000000000000000000000FFFFFFFFFFFFFFFF0000000000000000
       04D2E5F1F2}
@@ -52,7 +53,7 @@ object Form2: TForm2
       Left = 16
       Top = 40
       Width = 281
-      Height = 57
+      Height = 21
       TabOrder = 0
     end
     object RadioGroup1: TRadioGroup
@@ -84,13 +85,29 @@ object Form2: TForm2
       TabOrder = 3
       OnClick = Button4Click
     end
-    object GroupBox2: TGroupBox
-      Left = 0
-      Top = 0
-      Width = 337
-      Height = 233
-      Caption = 'GroupBox2'
-      TabOrder = 4
+  end
+  object Button2: TButton
+    Left = 816
+    Top = 80
+    Width = 75
+    Height = 25
+    Caption = 'Button2'
+    TabOrder = 3
+    OnClick = Button2Click
+  end
+  object GroupBox2: TGroupBox
+    Left = 448
+    Top = 16
+    Width = 329
+    Height = 385
+    Caption = 'GroupBox2'
+    TabOrder = 4
+    Visible = False
+    object Label2: TLabel
+      Left = 8
+      Top = 24
+      Width = 3
+      Height = 13
     end
   end
 end

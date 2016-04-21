@@ -7,10 +7,13 @@ uses
 procedure createTest(time:Integer);
 function addCategory(name:string; useQuest:integer; markQuest:integer):Pointer;
 function createQuestion(text:string; typeQuestion:Integer):Pointer;
-{procedure createAnswer(idCateg:Integer; idQuest:Integer; idAnsw:Integer; isCorrect:Boolean; text:string; attachment:string);
- }
+function createAnswer(isCorrect:Boolean; text:string):Pointer;
+function str():string;
+
 var _test:Test;
 implementation
+
+uses SysUtils;
 
 procedure createTest(time:Integer);
 begin
@@ -49,24 +52,34 @@ begin
   New(quest);
   quest.text := text;
   quest.typeQuestion := typeQuestion;
-//  quest.attachment := attachment;  
+//  quest.attachment := attachment;
   quest.recType:=2;
   SetLength(quest.variantAnswers,0);
 
   createQuestion:=quest;
 end;
 
-{procedure createAnswer(idCateg:Integer; idQuest:Integer; idAnsw:Integer; isCorrect:Boolean; text:string; attachment:string);
+function createAnswer(isCorrect:Boolean; text:string):Pointer;
 var
-  answ:Answer;
+  answ:^Answer;
 begin
+  New(answ);
   answ.isCorrect := isCorrect;
   answ.text := text;
-  answ.attachment := attachment;
-  with _test.categoris[idCateg].Questions[idQuest] do
-  begin
-    SetLength(variantAnswers,length(variantAnswers)+1);
-    variantAnswers[idAnsw] := answ;
-  end;
-end;}
+  createAnswer:=answ;
+end;
+
+function str():string;
+var i,j:Integer;
+s:string;
+e:Pointer;
+ref:^Categoris;
+begin
+  //for i:=0 to Length(_test.categoris)-1 do
+    //s:=ref(_test.categoris[i]).name;
+  //ref(_test.categoris[i])
+    //s:=s+ref(_test.categoris[i]).name+' ';
+  //str:=s;
+end;
+
 end.

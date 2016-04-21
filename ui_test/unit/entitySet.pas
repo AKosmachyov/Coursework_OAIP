@@ -6,23 +6,22 @@ type
     isCorrect : Boolean;
     text : string;
     attachment : string;
-    recType:string;
   end;
 
   Question = record
+    recType:Integer;
     text : string;
     typeQuestion : integer;
     attachment : string;
     variantAnswers : array of Pointer;
-    recType:Integer;
   end;
 
   Categoris = record
+    recType:integer;
     name:string;
     useQuestions : Integer;
     markQuestion : Real;
-    Questions : array of Question;
-    recType:integer;
+    Questions : array of Pointer;
   end;
 
   Test = record

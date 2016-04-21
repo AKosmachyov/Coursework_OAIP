@@ -16,17 +16,22 @@ type
     RadioGroup1: TRadioGroup;
     Button3: TButton;
     Button4: TButton;
+    Button2: TButton;
     GroupBox2: TGroupBox;
+    Label2: TLabel;
     procedure FormClose(Sender: TObject; var Action: TCloseAction);
     procedure Button1Click(Sender: TObject);
     procedure Button3Click(Sender: TObject);
     procedure Button4Click(Sender: TObject);
+    procedure Button2Click(Sender: TObject);
+    procedure TreeView1Click(Sender: TObject);
   private
     { Private declarations }
   public
     { Public declarations }
   end;
   ref = ^Categoris ;
+  refQue = ^Question ;
 
 var
   Form2: TForm2;
@@ -59,14 +64,10 @@ begin
     else
       Exit;
   end;
-
   case ref(TreeView1.Selected.Data).recType of
     1:begin
       GroupBox1.Visible:=True;
       Exit;
-    end;
-    2:begin
-      GroupBox2.Visible:=True;
     end;
    else ShowMessage('unKnow variant');
   end;
@@ -74,16 +75,37 @@ begin
 end;
 
 procedure TForm2.Button3Click(Sender: TObject);
+var abc:Pointer;
 begin
-  ShowMessage(IntToStr(RadioGroup1.ItemIndex));
-  SetLength(ref(TreeView1.Selected.Data).Questions,Length(ref(TreeView1.Selected.Data).Questions));
-  TreeView1.Items.AddChildObject(TreeView1.Selected, Edit1.Text, createQuestion(Edit1.Text,45));
+  abc:=createQuestion(Edit1.Text, RadioGroup1.ItemIndex);
+  SetLength(ref(TreeView1.Selected.Data).Questions,Length(ref(TreeView1.Selected.Data).Questions)+1);
+  ref(TreeView1.Selected.Data).Questions[Length(ref(TreeView1.Selected.Data).Questions)-1]:=abc;
+  TreeView1.Items.AddChildObject(TreeView1.Selected, Edit1.Text, abc);
   GroupBox1.Visible:=False;
 end;
 
 procedure TForm2.Button4Click(Sender: TObject);
 begin
   GroupBox1.Visible:=False;
+end;
+
+procedure TForm2.Button2Click(Sender: TObject);
+begin
+  ShowMessage('asd');
+end;
+
+procedure TForm2.TreeView1Click(Sender: TObject);
+begin
+  if TreeView1.Selected.Data <> nil then
+  begin
+    case refQue(TreeView1.Selected.Data).recType of
+      2:begin
+          GroupBox2.Visible:=True;
+          label2.Caption:=refQue(TreeView1.Selected.Data).text;
+      end;
+    else GroupBox2.Visible:=False;
+    end;
+  end;
 end;
 
 end.
