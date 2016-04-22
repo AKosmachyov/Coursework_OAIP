@@ -91,14 +91,15 @@ object Form2: TForm2
     Top = 64
     Width = 75
     Height = 25
-    Caption = 'Button2'
+    Caption = '-'
     TabOrder = 3
+    OnClick = Button2Click
   end
   object GroupBox2: TGroupBox
     Left = 328
     Top = 16
     Width = 505
-    Height = 385
+    Height = 409
     Caption = #1042#1086#1087#1088#1086#1089
     TabOrder = 4
     Visible = False

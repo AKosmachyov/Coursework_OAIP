@@ -9,7 +9,10 @@ function addCategory(name:string; useQuest:integer; markQuest:integer):Pointer;
 function createQuestion(text:string; typeQuestion:Integer):Pointer;
 function createAnswer(text:string;isCorrect:Boolean):Pointer;
 function str():string;
-
+procedure deleteCateg(current:Pointer);
+procedure deleteQues(current:Pointer;parent:Pointer);
+type
+  refCateg=^Categoris;
 var _test:Test;
 implementation
 
@@ -81,5 +84,25 @@ begin
     //s:=s+ref(_test.categoris[i]).name+' ';
   //str:=s;
 end;
+procedure deleteCateg(current:Pointer);
+var i:integer;
+begin
+  for i:=0 to Length(_test.categoris)-1 do
+    if _test.categoris[i]=current then
+      Break;
+  for i:=i+1 to Length(_test.categoris)-1 do
+    _test.categoris[i-1]:=_test.categoris[i];
+  SetLength(_test.categoris,Length(_test.categoris)-1);
+end;
 
+procedure deleteQues(current:Pointer;parent:Pointer);
+var i:integer;
+begin
+  for i:=0 to Length(refCateg(parent).Questions)-1 do
+    if refCateg(parent).Questions[i]=current then
+      Break;
+  for i:=i+1 to Length(refCateg(parent).Questions)-1 do
+    refCateg(parent).Questions[i-1]:=refCateg(parent).Questions[i];
+  SetLength(refCateg(parent).Questions,Length(refCateg(parent).Questions)-1);
+end;
 end.

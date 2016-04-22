@@ -34,6 +34,7 @@ type
     procedure TreeView1Click(Sender: TObject);
     procedure Button5Click(Sender: TObject);
     procedure Button7Click(Sender: TObject);
+    procedure Button2Click(Sender: TObject);
 
   private
     { Private declarations }
@@ -57,10 +58,7 @@ begin
 end;
 
 procedure TForm2.Button1Click(Sender: TObject);
-var value:string;
-  cat:Categoris;
-  CheckBox1: TCheckBox;
-  
+var value:string;  
 begin
   if TreeView1.Selected = nil then
     Exit;
@@ -70,6 +68,7 @@ begin
     if value <> '' then
     begin
       TreeView1.Items.AddChildObject(TreeView1.Selected, value, addCategory(value,-1,-1));
+      TreeView1.Selected.Expanded:=true;
       Exit;
     end
     else
@@ -93,6 +92,7 @@ begin
   SetLength(ref(TreeView1.Selected.Data).Questions,Length(ref(TreeView1.Selected.Data).Questions)+1);
   ref(TreeView1.Selected.Data).Questions[Length(ref(TreeView1.Selected.Data).Questions)-1]:=abc;
   TreeView1.Items.AddChildObject(TreeView1.Selected, Edit1.Text, abc);
+  TreeView1.Selected.MakeVisible();
   GroupBox1.Visible:=False;
 end;
 
@@ -101,7 +101,7 @@ begin
   GroupBox1.Visible:=False;
   GroupBox3.Visible:=False;
 end;
-//мен€ет содержимое вопроса
+//отображение содержимого
 procedure TForm2.TreeView1Click(Sender: TObject);
 var i:Integer;
 begin
@@ -129,6 +129,8 @@ begin
                   chBox[Length(chBox)-1].Top:=20
                 else
                   chBox[Length(chBox)-1].Top:=chBox[Length(chBox)-2].Top+20;
+                if refAnsw(refQue(TreeView1.Selected.Data).variantAnswers[i]).isCorrect = True then
+                  chBox[Length(chBox)-1].Checked:=True;
               end;
               1:begin
                 RadioGroup2.Items.Add(refAnsw(refQue(TreeView1.Selected.Data).variantAnswers[i]).text);
@@ -179,15 +181,9 @@ var i:integer;
 begin
   case refQue(TreeView1.Selected.Data).typeQuestion of
     0:begin
-        {SetLength(chBox,Length(chBox)+1);
-        chBox[Length(chBox)-1]:=TCheckBox.Create(RadioGroup2);
-        chBox[Length(chBox)-1].parent:=RadioGroup2;
-        chBox[Length(chBox)-1].Caption:=refAnsw(refQue(TreeView1.Selected.Data).variantAnswers[i]).text;
-        chBox[Length(chBox)-1].Left:=5;
-        if Length(chBox)=1 then
-          chBox[Length(chBox)-1].Top:=20
-        else
-          chBox[Length(chBox)-1].Top:=chBox[Length(chBox)-2].Top+20;}
+        for i:=0 to Length(chBox)-1 do
+         if chBox[i].Checked = True then
+          refAnsw(refQue(TreeView1.Selected.Data).variantAnswers[i]).isCorrect:=True;
       end;
     1:begin
         for i:=0 to Length(refQue(TreeView1.Selected.Data).variantAnswers)-1 do
@@ -206,6 +202,20 @@ begin
     2:begin
         refAnsw(refQue(TreeView1.Selected.Data).variantAnswers[0]).text:=Edit3.Text;
       end;
+  end;
+end;
+// нопка удалени€
+procedure TForm2.Button2Click(Sender: TObject);
+begin
+  case ref(TreeView1.Selected.Data).recType of
+    1:begin
+      deleteCateg(TreeView1.Selected.Data);
+      TreeView1.Selected.Delete;
+    end;
+    2:begin
+      deleteQues(TreeView1.Selected.Data,TreeView1.Selected.Parent.Data);
+      TreeView1.Selected.Delete;
+    end;
   end;
 end;
 
