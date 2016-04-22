@@ -7,7 +7,7 @@ uses
 procedure createTest(time:Integer);
 function addCategory(name:string; useQuest:integer; markQuest:integer):Pointer;
 function createQuestion(text:string; typeQuestion:Integer):Pointer;
-function createAnswer(text:string):Pointer;
+function createAnswer(text:string;isCorrect:Boolean):Pointer;
 function str():string;
 
 var _test:Test;
@@ -59,12 +59,13 @@ begin
   createQuestion:=quest;
 end;
 
-function createAnswer(text:string):Pointer;
+function createAnswer(text:string;isCorrect:Boolean):Pointer;
 var
   answ:^Answer;
 begin
   New(answ);
   answ.text := text;
+  answ.isCorrect:=isCorrect;
   createAnswer:=answ;
 end;
 

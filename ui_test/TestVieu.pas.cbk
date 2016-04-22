@@ -129,6 +129,8 @@ begin
                   chBox[Length(chBox)-1].Top:=20
                 else
                   chBox[Length(chBox)-1].Top:=chBox[Length(chBox)-2].Top+20;
+                if refAnsw(refQue(TreeView1.Selected.Data).variantAnswers[i]).isCorrect = True then
+                  chBox[Length(chBox)-1].Checked:=True;
               end;
               1:begin
                 RadioGroup2.Items.Add(refAnsw(refQue(TreeView1.Selected.Data).variantAnswers[i]).text);
@@ -179,15 +181,9 @@ var i:integer;
 begin
   case refQue(TreeView1.Selected.Data).typeQuestion of
     0:begin
-        {SetLength(chBox,Length(chBox)+1);
-        chBox[Length(chBox)-1]:=TCheckBox.Create(RadioGroup2);
-        chBox[Length(chBox)-1].parent:=RadioGroup2;
-        chBox[Length(chBox)-1].Caption:=refAnsw(refQue(TreeView1.Selected.Data).variantAnswers[i]).text;
-        chBox[Length(chBox)-1].Left:=5;
-        if Length(chBox)=1 then
-          chBox[Length(chBox)-1].Top:=20
-        else
-          chBox[Length(chBox)-1].Top:=chBox[Length(chBox)-2].Top+20;}
+        for i:=0 to Length(chBox)-1 do
+         if chBox[i].Checked = True then
+          refAnsw(refQue(TreeView1.Selected.Data).variantAnswers[i]).isCorrect:=True;
       end;
     1:begin
         for i:=0 to Length(refQue(TreeView1.Selected.Data).variantAnswers)-1 do
